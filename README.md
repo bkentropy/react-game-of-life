@@ -1,3 +1,5 @@
+Much credit goes to https://github.com/jedborovik/go-react-starter for a good starting template.
+
 # Go React Starter
 
 Use Go and React without missing out on hot module reloading while in development.
