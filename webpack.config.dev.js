@@ -12,10 +12,14 @@ module.exports = {
     filename: 'bundle.js',
   },
   module: {
-    loaders: [{
-      test: /\.js$/,
-      include: __dirname + '/client',
-      loaders: ['babel'],
+    loaders: [
+      {
+        test: /\.css$/, loader: "style-loader!css-loader"
+      },
+      {
+        test: /\.js$/,
+        include: __dirname + '/client',
+        loaders: ['babel'],
     }]
   },
   plugins: [

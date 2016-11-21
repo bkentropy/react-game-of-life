@@ -1,0 +1,15 @@
+{ "www": "localhost",
+  "host": "exlab",
+  "labid": "exlab",
+  "user": "admin",
+  "iface" : { "incordcmts": true,
+              "incpdf": true,
+              "recvapp": "XYZ",
+              "labapp": "SelectIS",
+              "clientid": "951620357",
+              "labid": "exlab",
+              "type": "emr-standard-231",
+              "gwid": "gw0155",
+              "upload": { "type" : "gateway" },
+              "filename": "/Users/briankustra/Desktop/tmp/%l-%a-%t.hl7"}
+}

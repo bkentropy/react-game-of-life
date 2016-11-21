@@ -10,7 +10,7 @@ func main() {
 		http.ServeFile(w, r, "index.html")
 	})
 	http.HandleFunc("/public/", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, r.URL.Path[1:])
+		http.ServeFile(w, r, r.URL.Path[1:]) // just put a file in pubblic and wa la there it is
 	})
 	fmt.Println("Server up and running on port 3333")
 	http.ListenAndServe(":3333", nil)
