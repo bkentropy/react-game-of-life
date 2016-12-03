@@ -19,7 +19,7 @@ function Board(props) {
 
     return {
         renderSquare: function(i) {
-            return <Square value={props.squares[i]} onClick={() => props.onClick(i)} />;
+            return <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)} />;
         },
         render: function() {
             return (
@@ -83,16 +83,28 @@ class Game extends React.Component {
         } else {
             status = "Next player: " + (this.state.xIsNext ? "X" : "O");
         }
+        const moves = history.map((step, move) => {
+            const desc = move ?
+                'Move #' + move :
+                'Game start';
+            return (
+                <li key={move}>
+                    <a href="#" onClick={()=> this.JumpTo(move)}>{desc}</a>
+                </li>
+            )
+
+        })
         return (
             <div className="game">
             <div className="game-board">
-            <div>{status}</div>
             <Board
                 squares={current.squares}
                 onClick={(i) => this.handleClick(i)}
             />
             </div>
             <div className="game-info">
+                <div>{status}</div>
+                <ol>{moves}</ol>
                 <div>{"fndm"/* TODO */}</div>
             </div>
             </div>
