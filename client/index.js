@@ -6,6 +6,24 @@ require("./theme.css")
 //   <div>Hello world</div>,
 //   document.getElementById('root')
 // );
+function coordinates(pos) {
+    const posMap = {
+        0: [0, 0],
+        1: [0, 1],
+        2: [0, 2],
+        3: [1, 0],
+        4: [1, 1],
+        5: [1, 2],
+        6: [2, 0],
+        7: [2, 1],
+        8: [2, 2],
+    }
+    if (pos < 0 || pos > 8) {
+        return [null, null]
+    } else {
+        return posMap[pos]
+    }
+}
 
 function Square(props) {
     return (
@@ -21,6 +39,12 @@ function Board(props) {
         renderSquare: function(i) {
             return <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)} />;
         },
+        // renderBoard: function() {
+            // for (var i = 0; i < 9; i++) {
+            //     console.log(i)
+            // }
+            // return <div className="board"></div>
+        // },
         render: function() {
             return (
                 <div>
@@ -55,14 +79,17 @@ class Game extends React.Component {
             }],
             xIsNext: true,
             stepNumber: 0,
+            moveHistory: [{
+                0: [null, null],
+            }]
         };
     }
 
     handleClick(i) {
-        console.log("click call")
         const history = this.state.history;
         const current = history[history.length - 1];
         const squares = current.squares.slice();
+        const stepNum = history.length;
         if (calculateWinner(squares) || squares[i]) {
             return;
         }
@@ -72,19 +99,19 @@ class Game extends React.Component {
                 squares: squares
             }]),
             xIsNext: !this.state.xIsNext,
-            stepNumber: history.length,
+            stepNumber: stepNum,
+            moveHistory: this.state.moveHistory.concat([{
+                stepNum: coordinates(i),
+            }]),
         });
     }
 
     jumpTo(step) {
-    console.log("jump call")
         this.setState({
             stepNumber: step,
             xIsNext: (step % 2) ? false : true,
         });
     }
-
-
 
     render() {
         const history = this.state.history;
@@ -97,11 +124,19 @@ class Game extends React.Component {
             status = "Next player: " + (this.state.xIsNext ? "X" : "O");
         }
         const moves = history.map((step, move) => {
+            console.log(this.state.moveHistory)
+            const coords = this.state.moveHistory[move]["stepNum"]
             const desc = move ?
-                'Move #' + move :
+                'Move #' + move + " is on " + coords[0] + ", " + coords[1]:
                 'Game start';
+            let bFont;
+            if (move == this.state.stepNumber) {
+                bFont = {"fontWeight": "bold",}
+            } else {
+                bFont = {}
+            }
             return (
-                <li key={move}>
+                <li key={move} style={bFont}>
                     <a href="#" onClick={()=> this.jumpTo(move)}>{desc}</a>
                 </li>
             )
