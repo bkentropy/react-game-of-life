@@ -2,7 +2,9 @@ Much credit goes to https://github.com/jedborovik/go-react-starter for a good st
 
 # Go React Starter
 
+### Notes to self
 Use Go and React without missing out on hot module reloading while in development.
+Went through a react tutorial to build tic tac toe, now convert to game of life.
 
 ### Dev
 ```shell
