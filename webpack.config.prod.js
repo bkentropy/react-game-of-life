@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 
 module.exports = {
+  // should probably turn source map off for prod
   devtool: 'source-map',
   entry: [
     './client/index',
@@ -11,7 +12,12 @@ module.exports = {
     filename: 'bundle.js',
   },
   module: {
-    loaders: [{
+    loaders: [
+    {
+      test: /\.css$/,
+      loader: "style-loader!css-loader"
+    },
+    {
       test: /\.js$/,
       include: __dirname + '/client',
       loaders: ['babel'],
