@@ -2,8 +2,9 @@
 // import * as firebase from "firebase/app";
 
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 
 import css from "./theme.css";
 // ReactDOM.render(
@@ -165,12 +166,6 @@ class Game extends React.Component {
 }
 
 // ==========================
-
-ReactDOM.render(
-    <Game />,
-    document.getElementById('root')
-);
-
 function calculateWinner(squares) {
     const lines = [
         [0, 1, 2],
@@ -190,3 +185,38 @@ function calculateWinner(squares) {
     }
     return null;
 }
+
+function Home() {
+    return <h2>Home</h2>
+}
+
+function MakeGame() {
+    return <Game />
+}
+
+function AppRouter() {
+    return (
+        <Router>
+            <div>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/game">Game</Link>
+                        </li>
+                    </ul>
+                </nav>
+
+                <Route path="/" exact component={Home} />
+                <Route path="/game" component={Game} />
+            </div>
+        </Router>
+    )
+}
+
+ReactDOM.render(
+    <AppRouter />,
+    document.getElementById('root')
+);
