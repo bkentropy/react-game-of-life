@@ -2,6 +2,7 @@ const path = require("path");
 
 module.exports = {
     entry: "./src/index.js",
+    devtool: "source-map",
     output: {
         path: path.resolve(__dirname, "server/public"),
         filename: "bundle.js"
@@ -17,7 +18,7 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
+                use: ["style-loader", "css-loader"],
             }
         ]
     },
