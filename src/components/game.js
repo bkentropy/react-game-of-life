@@ -89,7 +89,7 @@ function coordinates(pos) {
 
 
 // Export class
-export class Game extends React.Component {
+export default class TicTacToe extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -178,4 +178,7 @@ export class Game extends React.Component {
         );
     }
 }
+
+// export default class GameOfLife extends React.Component {
+// }
 

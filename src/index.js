@@ -7,38 +7,45 @@ import ReactDOM from "react-dom";
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 
 import css from "./theme.css";
-import Game from "./components/game.js";
+import TicTacToe from "./components/game.js";
 
-function Home() {
+function Summary() {
     return (
         <div>
-            <h2>Home</h2>
-            <p>Select the game you would like to play</p>
+            <h2>Summary</h2>
+            <p>So far only tic toe is available, Conway's game of life is next</p>
         </div>
     )
 }
 
-function MakeGame() {
-    return <Game />
+function MakeTicTacToe() {
+    return (
+        <div>
+            <h2>Tic Tac Toe</h2>
+            <TicTacToe />
+        </div>
+    )
 }
 
 function AppRouter() {
     return (
         <Router>
             <div>
+                <h1>Home</h1>
+                <p>Select the game you would like to play</p>
                 <nav>
                     <ul>
                         <li>
-                            <Link to="/">Home</Link>
+                            <Link to="/">Summary</Link>
                         </li>
                         <li>
-                            <Link to="/game">Game</Link>
+                            <Link to="/tictactoe">Tic Tac Toe</Link>
                         </li>
                     </ul>
                 </nav>
 
-                <Route path="/" exact component={Home} />
-                <Route path="/game" component={Game} />
+                <Route path="/" exact component={Summary} />
+                <Route path="/tictactoe" component={MakeTicTacToe} />
             </div>
         </Router>
     )
