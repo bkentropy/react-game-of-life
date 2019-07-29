@@ -7,7 +7,7 @@ import ReactDOM from "react-dom";
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 
 import css from "./theme.css";
-import TicTacToe from "./components/game.js";
+import {TicTacToe, GameOfLife} from "./components/game.js";
 
 function Summary() {
     return (
@@ -27,6 +27,15 @@ function MakeTicTacToe() {
     )
 }
 
+function MakeGameOfLife() {
+    return (
+        <div>
+            <h2>Conway's Game of Life</h2>
+            <GameOfLife />
+        </div>
+    )
+}
+
 function AppRouter() {
     return (
         <Router>
@@ -41,11 +50,15 @@ function AppRouter() {
                         <li>
                             <Link to="/tictactoe">Tic Tac Toe</Link>
                         </li>
+                        <li>
+                            <Link to="/gameoflife">GameOfLife</Link>
+                        </li>
                     </ul>
                 </nav>
 
                 <Route path="/" exact component={Summary} />
                 <Route path="/tictactoe" component={MakeTicTacToe} />
+                <Route path="/gameoflife" component={MakeGameOfLife} />
             </div>
         </Router>
     )
