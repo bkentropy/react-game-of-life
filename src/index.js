@@ -10,7 +10,12 @@ import css from "./theme.css";
 import Game from "./components/game.js";
 
 function Home() {
-    return <h2>Home</h2>
+    return (
+        <div>
+            <h2>Home</h2>
+            <p>Select the game you would like to play</p>
+        </div>
+    )
 }
 
 function MakeGame() {
@@ -39,7 +44,6 @@ function AppRouter() {
     )
 }
 
-console.log("y")
 
 ReactDOM.render(
     <AppRouter />,
