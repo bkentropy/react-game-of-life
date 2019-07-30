@@ -1,6 +1,7 @@
 {
-  "name": "go-react-starter",
-  "version": "0.0.2",
+  "name": "game-server",
+  "version": "0.0.1",
+  "repository": "https://github.com/bkentropy/react-game-of-life",
   "description": "Go server with node proxy for hot module reloading in dev.",
   "dependencies": {
     "firebase": "^6.1.1",
@@ -18,6 +19,7 @@
     "react-router-dom": "^5.0.1",
     "style-loader": "^0.23.1",
     "webpack": "^4.34.0",
+    "lodash": ">=4.17.13",
     "webpack-cli": "^3.3.4"
   },
   "scripts": {
