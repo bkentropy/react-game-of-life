@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 // ==========================
 function calculateWinner(squares) {
@@ -178,14 +177,3 @@ export class TicTacToe extends React.Component {
         );
     }
 }
-
-export class GameOfLife extends React.Component {
-    render() {
-        return (
-            <div>
-                <h1>GameOfLife</h1>
-            </div>
-        )
-    }
-}
-

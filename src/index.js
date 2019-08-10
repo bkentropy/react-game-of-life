@@ -7,7 +7,8 @@ import ReactDOM from "react-dom";
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 
 import css from "./theme.css";
-import {TicTacToe, GameOfLife} from "./components/game.js";
+import {TicTacToe} from "./components/tic-tac-toe.js";
+import {GameOfLife} from "./components/conways.js";
 
 function Summary() {
     return (
