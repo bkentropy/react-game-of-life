@@ -1,5 +1,5 @@
 {
-  "name": "go-react-starter",
+  "name": "games-with-react",
   "version": "0.0.2",
   "description": "Go server with node proxy for hot module reloading in dev.",
   "dependencies": {
