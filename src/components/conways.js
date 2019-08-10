@@ -6,19 +6,41 @@ var rowNum = 10;
 var colNum = 10;
 var nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
+class Square extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {alive: false}
+    }
+
+    render() {
+        return (
+            <div className={this.props.classes} onClick={props.click}>sq</div>
+        )
+    }
+}
+
 function RowDiv(props) {
+    function turnGreen(e) {
+        console.log(e.target.classList)
+        if (!e.target.classList.contains("alive")) {
+            // add class alive
+            e.target.classList.add("alive")
+        } else {
+            e.target.classList.remove("alive")
+        }
+    }
+
     var rowkey = "row" + props.id
     var row = nums.map(i => {
         var col = "column" + i
         var classes = "golsquare " + col
         var k = props.id + col
-        // console.log(k)
+            // <Square key={k} click={turnGreen} />
         return (
-            <div key={k} className={classes}>
-                sq
-            </div>
+            <div key={k} className={classes} onClick={turnGreen}></div>
         )
     })
+
     return (
         <div id={rowkey} key={rowkey} className="ROWS">
             {row}
@@ -26,12 +48,12 @@ function RowDiv(props) {
     )
 }
 
-// dang. might need this.
-// function Square(props) {
-//     var classes = "square " + props.classes
-//     return (
-//         <div id={props.id} className={classes}>sq</div>
-//     )
+// function turnGreen() {
+//   var $el = $(this);
+//   $el
+//     .addClass("alive")
+//     .off("click", turnGreen)
+//     .on("click", death);
 // }
 
 
@@ -52,27 +74,11 @@ export class GameOfLife extends React.Component {
     }
 }
 
-// $(document).ready(function () {
-//     $('#gameDiv').append($row);
-//     //add columns to the the temp row object
-//     for (var i = 0; i < columns; i++) {
-//         $row.append($square.clone().addClass("column" + i));
-//     }
-//     //clone the temp row object with the columns to the wrapper
-//     for (var j = 0; j < rows; j++) {
-//         $("#wrapper").append($row.clone().addClass("row" + j));
-//     }
-
 //     $('.square').on('click', turnGreen);
 //     $('.step').on('click', liveOrDie);
 //     $('.run').on('click', goGoGo);
 //     $('.pause').on('click', stopStop);
 //     $('.clear').on('click', clearBoard);
-// });
-
-
-// jquery way, port to react wa// TODO: put the text on the left in a 1/3 ish column and the game in the right 2/3rds
-
 
 // // Click to make life
 // function turnGreen() {

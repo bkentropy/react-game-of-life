@@ -72,3 +72,7 @@ ol, ul {
     float: left;
     background: #FFFFFF;
 }
+
+.alive {
+  background-color: green;
+}
