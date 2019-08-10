@@ -7,20 +7,26 @@ var colNum = 10;
 var nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 function RowDiv(props) {
+    var rowkey = "row" + props.id
     var row = nums.map(i => {
         var col = "column" + i
         var classes = "golsquare " + col
+        var k = props.id + col
+        // console.log(k)
         return (
-            <div key={col}>
-                <div className={classes}>sq</div>
+            <div key={k} className={classes}>
+                sq
             </div>
         )
     })
     return (
-        <div id={props.id} className="ROWS">{row}</div>
+        <div id={rowkey} key={rowkey} className="ROWS">
+            {row}
+        </div>
     )
 }
 
+// dang. might need this.
 // function Square(props) {
 //     var classes = "square " + props.classes
 //     return (
@@ -31,12 +37,15 @@ function RowDiv(props) {
 
 export class GameOfLife extends React.Component {
     render() {
+        var rows = nums.map(i => {
+            return <RowDiv key={i} id={i}/>
+        })
         
         return (
             <div>
                 <h1>GameOfLife</h1>
                 <div id="gameDiv">
-                    <RowDiv id="1"/>
+                    {rows}
                 </div>
             </div>
         )
