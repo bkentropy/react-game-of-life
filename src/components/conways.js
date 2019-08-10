@@ -10,34 +10,36 @@ class Square extends React.Component {
     constructor(props) {
         super(props)
         this.state = {alive: false}
+        this.turnGreen = this.turnGreen.bind(this);
+    }
+
+    turnGreen() {
+        if (!this.state.alive) {
+            this.setState(state => ({alive: true}))
+        } else {
+            this.setState(state => ({alive: false}))
+        }
     }
 
     render() {
+        var classes = this.props.classes
+        if (this.state.alive) {
+            classes = classes + " alive"
+        }
         return (
-            <div className={this.props.classes} onClick={props.click}>sq</div>
+            <div className={classes} onClick={this.turnGreen}></div>
         )
     }
 }
 
 function RowDiv(props) {
-    function turnGreen(e) {
-        console.log(e.target.classList)
-        if (!e.target.classList.contains("alive")) {
-            // add class alive
-            e.target.classList.add("alive")
-        } else {
-            e.target.classList.remove("alive")
-        }
-    }
-
     var rowkey = "row" + props.id
     var row = nums.map(i => {
         var col = "column" + i
         var classes = "golsquare " + col
         var k = props.id + col
-            // <Square key={k} click={turnGreen} />
         return (
-            <div key={k} className={classes} onClick={turnGreen}></div>
+            <Square key={k} classes={classes}/>
         )
     })
 
