@@ -52,7 +52,7 @@ function AppRouter() {
                             <Link to="/tictactoe">Tic Tac Toe</Link>
                         </li>
                         <li>
-                            <Link to="/gameoflife">GameOfLife</Link>
+                            <Link to="/gameoflife">Game Of Life</Link>
                         </li>
                     </ul>
                 </nav>
