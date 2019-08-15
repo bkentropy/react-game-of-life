@@ -1,8 +1,7 @@
-# Go React Starter
+# Games in React
 
-### Notes to self
-Use Go and React without missing out on hot module reloading while in development.
-Went through a react tutorial to build tic tac toe, now convert to game of life.
+### Dependecies
+You will need Go (I'm using 1.12.6) and Node/npm (v10.15.3 / 6.4.1)
 
 ### Dev
 ```shell
@@ -14,7 +13,7 @@ $ go build && ./server
 $ npm i && npm start
 ```
 
-Then visit `localhost:3334`.
+Then visit `localhost:3333`. Webpack will automatically rebuild on save, but you will need to refresh the page.
 
 ### Prod
 ```
