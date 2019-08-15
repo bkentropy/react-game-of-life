@@ -50,57 +50,7 @@ function RowDiv(props) {
     )
 }
 
-// function turnGreen() {
-//   var $el = $(this);
-//   $el
-//     .addClass("alive")
-//     .off("click", turnGreen)
-//     .on("click", death);
-// }
-
-
-export class GameOfLife extends React.Component {
-    render() {
-        var rows = nums.map(i => {
-            return <RowDiv key={i} id={i}/>
-        })
-        
-        return (
-            <div>
-                <h1>GameOfLife</h1>
-                <div id="gameDiv">
-                    {rows}
-                </div>
-            </div>
-        )
-    }
-}
-
-//     $('.square').on('click', turnGreen);
-//     $('.step').on('click', liveOrDie);
-//     $('.run').on('click', goGoGo);
-//     $('.pause').on('click', stopStop);
-//     $('.clear').on('click', clearBoard);
-
-// // Click to make life
-// function turnGreen() {
-//   var $el = $(this);
-//   $el
-//     .addClass("alive")
-//     .off("click", turnGreen)
-//     .on("click", death);
-// }
-
-// function death() {
-//   var $el = $(this);
-//   $el
-//     .removeClass("alive")
-//     .off('click', death)
-//     .on("click", turnGreen)
-//   // $(this).removeClass("alive");
-// }
-
-// // Start building out the logic
+// Building out game logic
 // // Build a map of the alive cells
 // function makeMap(row, column) {
 //   var map = [];
@@ -129,6 +79,35 @@ export class GameOfLife extends React.Component {
 
 //   return map;
 // }
+export class GameOfLife extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {current: new Array(10).fill(new Array(10).fill(0))}
+    }
+
+
+
+    render() {
+        var rows = nums.map(i => {
+            return <RowDiv key={i} id={i}/>
+        })
+        
+        return (
+            <div>
+                <h1>Game Of Life</h1>
+                <div id="gameDiv">
+                    {rows}
+                </div>
+            </div>
+        )
+    }
+}
+
+//     $('.step').on('click', liveOrDie);
+//     $('.run').on('click', goGoGo);
+//     $('.pause').on('click', stopStop);
+//     $('.clear').on('click', clearBoard);
+
 
 
 // // Write a function that checks all of the neighbors
