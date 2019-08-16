@@ -1,4 +1,3 @@
-# Test the build
 language: go
 
 go:
