@@ -11,9 +11,13 @@ class Square extends React.Component {
         super(props)
         this.state = {alive: false}
         this.turnGreen = this.turnGreen.bind(this);
+        // this.handleSquareClick = this.handleSquareClick.bind(this)
     }
 
+    // handleSquareClick(i, j) { }
+
     turnGreen() {
+        this.props.onSquareClick(0, 0)
         if (!this.state.alive) {
             this.setState(state => ({alive: true}))
         } else {
@@ -32,22 +36,31 @@ class Square extends React.Component {
     }
 }
 
-function RowDiv(props) {
-    var rowkey = "row" + props.id
-    var row = nums.map(i => {
-        var col = "column" + i
-        var classes = "golsquare " + col
-        var k = props.id + col
-        return (
-            <Square key={k} classes={classes}/>
-        )
-    })
+class RowDiv extends React.Component {
+    constructor(props) {
+        super(props)
+    }
 
-    return (
-        <div id={rowkey} key={rowkey} className="ROWS">
-            {row}
-        </div>
-    )
+    render() {
+        var rowkey = "row" + this.props.id
+        var row = nums.map(i => {
+            var col = "column" + i
+            var classes = "golsquare " + col
+            var k = this.props.id + col
+            return (
+                <Square
+                    key={k}
+                    classes={classes}
+                    onSquareClick={this.props.onSquareClick} />
+            )
+        })
+
+        return (
+            <div id={rowkey} key={rowkey} className="ROWS">
+                {row}
+            </div>
+        )
+    }
 }
 
 // Building out game logic
@@ -79,17 +92,29 @@ function RowDiv(props) {
 
 //   return map;
 // }
+
 export class GameOfLife extends React.Component {
     constructor(props) {
         super(props)
+        this.handleSquareClick = this.handleSquareClick.bind(this)
         this.state = {current: new Array(10).fill(new Array(10).fill(0))}
     }
 
-
+    handleSquareClick(i, j) {
+        console.log(this.state.current[i][j])
+        var sqState = this.state.current[i][j] == 0 ? 1 : 0
+        console.log(sqState)
+        // this.setState
+    }
 
     render() {
-        var rows = nums.map(i => {
-            return <RowDiv key={i} id={i}/>
+        var rows = this.state.current.map((row, i) => {
+            return (
+                <RowDiv 
+                    key={i}
+                    current={this.state.current}
+                    onSquareClick={this.handleSquareClick} />
+            )
         })
         
         return (
