@@ -36,26 +36,31 @@ class Square extends React.Component {
     }
 }
 
-function RowDiv(props) {
-    var rowkey = "row" + props.id
-    var row = nums.map(i => {
-        var col = "column" + i
-        var classes = "golsquare " + col
-        var k = props.id + col
-        console.log(props.onSquareClick)
-        return (
-            <Square 
-                key={k} 
-                classes={classes} 
-                onSquareClick={props.onSquareClick} />
-        )
-    })
+class RowDiv extends React.Component {
+    constructor(props) {
+        super(props)
+    }
 
-    return (
-        <div id={rowkey} key={rowkey} className="ROWS">
-            {row}
-        </div>
-    )
+    render() {
+        var rowkey = "row" + this.props.id
+        var row = nums.map(i => {
+            var col = "column" + i
+            var classes = "golsquare " + col
+            var k = this.props.id + col
+            return (
+                <Square
+                    key={k}
+                    classes={classes}
+                    onSquareClick={this.props.onSquareClick} />
+            )
+        })
+
+        return (
+            <div id={rowkey} key={rowkey} className="ROWS">
+                {row}
+            </div>
+        )
+    }
 }
 
 // Building out game logic
@@ -103,8 +108,13 @@ export class GameOfLife extends React.Component {
     }
 
     render() {
-        var rows = nums.map(i => {
-            return <RowDiv key={i} id={i} onSquareClick={this.handleSquareClick} />
+        var rows = this.state.current.map((row, i) => {
+            return (
+                <RowDiv 
+                    key={i}
+                    current={this.state.current}
+                    onSquareClick={this.handleSquareClick} />
+            )
         })
         
         return (
