@@ -93,7 +93,7 @@ class RowDiv extends React.Component {
 //   return map;
 // }
 
-export class GameOfLife extends React.Component {
+class GameOfLife extends React.Component {
     constructor(props) {
         super(props)
         this.handleSquareClick = this.handleSquareClick.bind(this)
@@ -246,3 +246,5 @@ export class GameOfLife extends React.Component {
 // // TODO: Create a function that simple loops over the array and refactor stuff out to here
 // // TODO: When cells to live array is created checked if it is empty at end of a round, if it is run stopStop
 
+
+export {GameOfLife, Square}
