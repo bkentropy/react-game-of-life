@@ -2,15 +2,9 @@
 import React from "react";
 
 // game code
-var rowNum = 10;
-var colNum = 10;
-var nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-
 class Square extends React.Component {
     constructor(props) {
         super(props)
-        const alive = props.currentRow[props.colId]
-        this.state = {alive: alive}
         this.turnGreen = this.turnGreen.bind(this);
     }
 
@@ -20,8 +14,7 @@ class Square extends React.Component {
 
     render() {
         var classes = this.props.classes
-        console.log("alive: ", this.state.alive)
-        if (this.state.alive) {
+        if (this.props.alive) {
             classes = classes + " alive"
         }
         return (
@@ -33,13 +26,13 @@ class Square extends React.Component {
 class RowDiv extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {currentRow: props.current[props.rowId]}
-        console.log()
+        // this.state = {currentRow: props.current[props.rowId]}
+        this.state = {currentRow: props.current}
     }
 
     render() {
         var rowkey = "row" + this.props.id
-        var row = nums.map(i => {
+        var row = this.state.currentRow.map((alive, i) => {
             var col = "column" + i
             var classes = "golsquare " + col
             var k = `${this.props.rowId}${i}`
@@ -47,7 +40,8 @@ class RowDiv extends React.Component {
                 <Square
                     key={k}
                     rowId={this.props.rowId}
-                    currentRow={this.state.currentRow}
+                    // currentRow={this.state.currentRow}
+                    alive={alive}
                     colId={i}
                     classes={classes}
                     onSquareClick={this.props.onSquareClick} />
@@ -102,9 +96,11 @@ class GameOfLife extends React.Component {
     handleSquareClick(i, j) {
         console.log("i", i, "j", j)
         let boardState = this.state.current
+        console.log(boardState[i][j])
         const updateSq = !boardState[i][j]
-        console.log(updateSq)
         boardState[i][j] = updateSq
+        console.log(boardState[i][j])
+        console.log(boardState)
         this.setState({current: boardState})
     }
 
@@ -114,7 +110,7 @@ class GameOfLife extends React.Component {
                 <RowDiv 
                     key={i}
                     rowId={i}
-                    current={this.state.current}
+                    current={row}
                     onSquareClick={this.handleSquareClick} />
             )
         })
@@ -239,7 +235,6 @@ class GameOfLife extends React.Component {
 // function clearBoard() {
 //   for(i = 0; i < rows; i++) {
 //     for (j = 0; j < columns; j++) {
-//       console.log(i, j);
 //       $($('.row'+i).children()[j]).removeClass('alive')
 //     }
 //   }
