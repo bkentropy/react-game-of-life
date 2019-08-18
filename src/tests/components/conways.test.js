@@ -1,5 +1,5 @@
 import React from "react"
-import {Square} from "../../components/conways"
+import {Square, GameOfLife, boardInit} from "../../components/conways"
 import renderer from "react-test-renderer"
 
 test("Square changes green when clicked", () => {
@@ -16,4 +16,32 @@ test("Square changes green when clicked", () => {
 
     let tree = square.toJSON()
     expect(tree).toMatchSnapshot()
+})
+
+test("Test the the board works", () => {
+    const gameboard = renderer.create(
+        <GameOfLife boardInit={boardInit}/>
+    )
+
+    let tree = gameboard.toJSON()
+    expect(tree).toMatchSnapshot()
+
+    // console.log(tree.children)
+    //     [ { type: 'h1', props: {}, children: [ 'Game Of Life' ] },
+    // { type: 'div',
+    //   props: { id: 'gameDiv' },
+    //   children:
+    //    [ [Object],
+    //      [Object],
+    //      [Object],
+    //      [Object],
+    //      [Object],
+    //      [Object],
+    //      [Object],
+    //      [Object],
+    //      [Object],
+    //      [Object] ] } ]
+
+    console.log(tree.children[1].children[0].children[0])
+    // tree.props.onSquareClick()
 })

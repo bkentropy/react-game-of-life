@@ -42,7 +42,7 @@ class RowDiv extends React.Component {
     }
 
     render() {
-        var rowkey = "row" + this.props.id
+        var rowkey = "row" + this.props.rowId
         var row = this.props.current.map((alive, i) => {
             var col = "column" + i
             var classes = "golsquare " + col
@@ -100,7 +100,7 @@ class GameOfLife extends React.Component {
     constructor(props) {
         super(props)
         this.handleSquareClick = this.handleSquareClick.bind(this)
-        this.state = {current: boardInit}
+        this.state = {current: props.boardInit}
     }
 
     handleSquareClick(i, j) {
@@ -250,4 +250,4 @@ class GameOfLife extends React.Component {
 // // TODO: When cells to live array is created checked if it is empty at end of a round, if it is run stopStop
 
 
-export {GameOfLife, Square}
+export {GameOfLife, Square, boardInit}

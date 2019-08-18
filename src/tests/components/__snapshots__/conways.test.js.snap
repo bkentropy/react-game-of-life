@@ -6,3 +6,465 @@ exports[`Square changes green when clicked 1`] = `
   onClick={[Function]}
 />
 `;
+
+exports[`Test the the board works 1`] = `
+<div>
+  <h1>
+    Game Of Life
+  </h1>
+  <div
+    id="gameDiv"
+  >
+    <div
+      className="ROWS"
+      id="row0"
+    >
+      <div
+        className="golsquare column0"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column1"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column2"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column3"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column4"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column5"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column6"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column7"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column8"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column9"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="ROWS"
+      id="row1"
+    >
+      <div
+        className="golsquare column0"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column1"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column2"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column3"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column4"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column5"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column6"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column7"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column8"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column9"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="ROWS"
+      id="row2"
+    >
+      <div
+        className="golsquare column0"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column1"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column2"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column3"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column4"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column5"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column6"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column7"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column8"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column9"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="ROWS"
+      id="row3"
+    >
+      <div
+        className="golsquare column0"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column1"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column2"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column3"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column4"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column5"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column6"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column7"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column8"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column9"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="ROWS"
+      id="row4"
+    >
+      <div
+        className="golsquare column0"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column1"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column2"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column3"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column4"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column5"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column6"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column7"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column8"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column9"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="ROWS"
+      id="row5"
+    >
+      <div
+        className="golsquare column0"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column1"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column2"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column3"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column4"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column5"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column6"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column7"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column8"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column9"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="ROWS"
+      id="row6"
+    >
+      <div
+        className="golsquare column0"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column1"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column2"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column3"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column4"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column5"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column6"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column7"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column8"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column9"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="ROWS"
+      id="row7"
+    >
+      <div
+        className="golsquare column0"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column1"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column2"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column3"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column4"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column5"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column6"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column7"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column8"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column9"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="ROWS"
+      id="row8"
+    >
+      <div
+        className="golsquare column0"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column1"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column2"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column3"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column4"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column5"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column6"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column7"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column8"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column9"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="ROWS"
+      id="row9"
+    >
+      <div
+        className="golsquare column0"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column1"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column2"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column3"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column4"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column5"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column6"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column7"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column8"
+        onClick={[Function]}
+      />
+      <div
+        className="golsquare column9"
+        onClick={[Function]}
+      />
+    </div>
+  </div>
+</div>
+`;

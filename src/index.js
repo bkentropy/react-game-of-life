@@ -8,7 +8,7 @@ import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 
 import css from "./theme.css";
 import {TicTacToe} from "./components/tic-tac-toe.js";
-import {GameOfLife} from "./components/conways.js";
+import {GameOfLife, boardInit} from "./components/conways.js";
 
 function Summary() {
     return (
@@ -32,7 +32,7 @@ function MakeGameOfLife() {
     return (
         <div>
             <h2>Conway's Game of Life</h2>
-            <GameOfLife />
+            <GameOfLife boardInit={boardInit}/>
         </div>
     )
 }
