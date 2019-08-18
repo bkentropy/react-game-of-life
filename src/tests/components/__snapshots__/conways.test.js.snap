@@ -6,17 +6,3 @@ exports[`Square changes green when clicked 1`] = `
   onClick={[Function]}
 />
 `;
-
-exports[`Square changes green when clicked 2`] = `
-<div
-  className="golsquare column1 alive"
-  onClick={[Function]}
-/>
-`;
-
-exports[`Square changes green when clicked 3`] = `
-<div
-  className="golsquare column1"
-  onClick={[Function]}
-/>
-`;
