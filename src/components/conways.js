@@ -9,24 +9,18 @@ var nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 class Square extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {alive: false}
+        const alive = props.currentRow[props.colId]
+        this.state = {alive: alive}
         this.turnGreen = this.turnGreen.bind(this);
-        // this.handleSquareClick = this.handleSquareClick.bind(this)
     }
 
-    // handleSquareClick(i, j) { }
-
     turnGreen() {
-        this.props.onSquareClick(0, 0)
-        if (!this.state.alive) {
-            this.setState(state => ({alive: true}))
-        } else {
-            this.setState(state => ({alive: false}))
-        }
+        this.props.onSquareClick(this.props.rowId, this.props.colId)
     }
 
     render() {
         var classes = this.props.classes
+        console.log("alive: ", this.state.alive)
         if (this.state.alive) {
             classes = classes + " alive"
         }
@@ -39,6 +33,8 @@ class Square extends React.Component {
 class RowDiv extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {currentRow: props.current[props.rowId]}
+        console.log()
     }
 
     render() {
@@ -46,10 +42,13 @@ class RowDiv extends React.Component {
         var row = nums.map(i => {
             var col = "column" + i
             var classes = "golsquare " + col
-            var k = this.props.id + col
+            var k = `${this.props.rowId}${i}`
             return (
                 <Square
                     key={k}
+                    rowId={this.props.rowId}
+                    currentRow={this.state.currentRow}
+                    colId={i}
                     classes={classes}
                     onSquareClick={this.props.onSquareClick} />
             )
@@ -97,14 +96,16 @@ class GameOfLife extends React.Component {
     constructor(props) {
         super(props)
         this.handleSquareClick = this.handleSquareClick.bind(this)
-        this.state = {current: new Array(10).fill(new Array(10).fill(0))}
+        this.state = {current: new Array(10).fill(new Array(10).fill(false))}
     }
 
     handleSquareClick(i, j) {
-        console.log(this.state.current[i][j])
-        var sqState = this.state.current[i][j] == 0 ? 1 : 0
-        console.log(sqState)
-        // this.setState
+        console.log("i", i, "j", j)
+        let boardState = this.state.current
+        const updateSq = !boardState[i][j]
+        console.log(updateSq)
+        boardState[i][j] = updateSq
+        this.setState({current: boardState})
     }
 
     render() {
@@ -112,6 +113,7 @@ class GameOfLife extends React.Component {
             return (
                 <RowDiv 
                     key={i}
+                    rowId={i}
                     current={this.state.current}
                     onSquareClick={this.handleSquareClick} />
             )
