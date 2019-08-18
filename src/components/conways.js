@@ -26,13 +26,11 @@ class Square extends React.Component {
 class RowDiv extends React.Component {
     constructor(props) {
         super(props)
-        // this.state = {currentRow: props.current[props.rowId]}
-        this.state = {currentRow: props.current}
     }
 
     render() {
         var rowkey = "row" + this.props.id
-        var row = this.state.currentRow.map((alive, i) => {
+        var row = this.props.current.map((alive, i) => {
             var col = "column" + i
             var classes = "golsquare " + col
             var k = `${this.props.rowId}${i}`
@@ -40,7 +38,6 @@ class RowDiv extends React.Component {
                 <Square
                     key={k}
                     rowId={this.props.rowId}
-                    // currentRow={this.state.currentRow}
                     alive={alive}
                     colId={i}
                     classes={classes}
@@ -94,13 +91,11 @@ class GameOfLife extends React.Component {
     }
 
     handleSquareClick(i, j) {
-        console.log("i", i, "j", j)
+        const newrow = new Array(10).fill(false)
         let boardState = this.state.current
-        console.log(boardState[i][j])
         const updateSq = !boardState[i][j]
-        boardState[i][j] = updateSq
-        console.log(boardState[i][j])
-        console.log(boardState)
+        newrow[j] = updateSq
+        boardState[i] = newrow
         this.setState({current: boardState})
     }
 
