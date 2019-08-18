@@ -26,22 +26,11 @@ test("Test the the board works", () => {
     let tree = gameboard.toJSON()
     expect(tree).toMatchSnapshot()
 
-    // console.log(tree.children)
-    //     [ { type: 'h1', props: {}, children: [ 'Game Of Life' ] },
-    // { type: 'div',
-    //   props: { id: 'gameDiv' },
-    //   children:
-    //    [ [Object],
-    //      [Object],
-    //      [Object],
-    //      [Object],
-    //      [Object],
-    //      [Object],
-    //      [Object],
-    //      [Object],
-    //      [Object],
-    //      [Object] ] } ]
-
-    console.log(tree.children[1].children[0].children[0])
-    // tree.props.onSquareClick()
+    // // should turn green "alive"
+    // tree.children[1].children[0].children[0].props.onClick()
+    // expect(tree).toMatchSnapshot()
+    
+    // // should turn back "dead"
+    // tree.children[1].children[0].children[0].props.onClick()
+    // expect(tree).toMatchSnapshot()
 })
