@@ -9,23 +9,26 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "acron": "^1.0.5",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^3.0.0",
+    "jest": "^24.9.0",
+    "lodash": ">=4.17.13",
     "react": "^16.8.6",
     "react-router-dom": "^5.0.1",
+    "react-test-renderer": "^16.9.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.34.0",
-    "lodash": ">=4.17.13",
     "webpack-cli": "^3.3.4"
   },
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack --watch --mode development",
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "jest"
   },
   "keywords": [
     "react",
