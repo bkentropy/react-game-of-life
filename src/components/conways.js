@@ -1,6 +1,19 @@
 // conway's game of life
 import React from "react";
 
+const boardInit = [
+    [false, false, false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false],
+]
+
 // game code
 class Square extends React.Component {
     constructor(props) {
@@ -87,15 +100,13 @@ class GameOfLife extends React.Component {
     constructor(props) {
         super(props)
         this.handleSquareClick = this.handleSquareClick.bind(this)
-        this.state = {current: new Array(10).fill(new Array(10).fill(false))}
+        this.state = {current: boardInit}
     }
 
     handleSquareClick(i, j) {
-        const newrow = new Array(10).fill(false)
         let boardState = this.state.current
         const updateSq = !boardState[i][j]
-        newrow[j] = updateSq
-        boardState[i] = newrow
+        boardState[i][j] = updateSq
         this.setState({current: boardState})
     }
 
