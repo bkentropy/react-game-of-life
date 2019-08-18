@@ -15,5 +15,13 @@ test("Square changes green when clicked", () => {
     )
 
     let tree = square.toJSON()
-    expect (tree).toMatchSnapshot()
+    expect(tree).toMatchSnapshot()
+
+    tree.props.onClick()
+    tree = square.toJSON()
+    expect(tree).toMatchSnapshot()
+
+    tree.props.onClick()
+    tree = square.toJSON()
+    expect(tree).toMatchSnapshot()
 })
