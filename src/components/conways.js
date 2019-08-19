@@ -1,33 +1,33 @@
 // conway's game of life
 import React from "react";
 
-// game code
-var rowNum = 10;
-var colNum = 10;
-var nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+const boardInit = [
+    [false, false, false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false],
+]
 
+// game code
 class Square extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {alive: false}
         this.turnGreen = this.turnGreen.bind(this);
-        // this.handleSquareClick = this.handleSquareClick.bind(this)
     }
 
-    // handleSquareClick(i, j) { }
-
     turnGreen() {
-        this.props.onSquareClick(0, 0)
-        if (!this.state.alive) {
-            this.setState(state => ({alive: true}))
-        } else {
-            this.setState(state => ({alive: false}))
-        }
+        this.props.onSquareClick(this.props.rowId, this.props.colId)
     }
 
     render() {
         var classes = this.props.classes
-        if (this.state.alive) {
+        if (this.props.alive) {
             classes = classes + " alive"
         }
         return (
@@ -42,14 +42,17 @@ class RowDiv extends React.Component {
     }
 
     render() {
-        var rowkey = "row" + this.props.id
-        var row = nums.map(i => {
+        var rowkey = "row" + this.props.rowId
+        var row = this.props.current.map((alive, i) => {
             var col = "column" + i
             var classes = "golsquare " + col
-            var k = this.props.id + col
+            var k = `${this.props.rowId}${i}`
             return (
                 <Square
                     key={k}
+                    rowId={this.props.rowId}
+                    alive={alive}
+                    colId={i}
                     classes={classes}
                     onSquareClick={this.props.onSquareClick} />
             )
@@ -93,18 +96,18 @@ class RowDiv extends React.Component {
 //   return map;
 // }
 
-export class GameOfLife extends React.Component {
+class GameOfLife extends React.Component {
     constructor(props) {
         super(props)
         this.handleSquareClick = this.handleSquareClick.bind(this)
-        this.state = {current: new Array(10).fill(new Array(10).fill(0))}
+        this.state = {current: props.boardInit}
     }
 
     handleSquareClick(i, j) {
-        console.log(this.state.current[i][j])
-        var sqState = this.state.current[i][j] == 0 ? 1 : 0
-        console.log(sqState)
-        // this.setState
+        let boardState = this.state.current
+        const updateSq = !boardState[i][j]
+        boardState[i][j] = updateSq
+        this.setState({current: boardState})
     }
 
     render() {
@@ -112,7 +115,8 @@ export class GameOfLife extends React.Component {
             return (
                 <RowDiv 
                     key={i}
-                    current={this.state.current}
+                    rowId={i}
+                    current={row}
                     onSquareClick={this.handleSquareClick} />
             )
         })
@@ -237,7 +241,6 @@ export class GameOfLife extends React.Component {
 // function clearBoard() {
 //   for(i = 0; i < rows; i++) {
 //     for (j = 0; j < columns; j++) {
-//       console.log(i, j);
 //       $($('.row'+i).children()[j]).removeClass('alive')
 //     }
 //   }
@@ -246,3 +249,5 @@ export class GameOfLife extends React.Component {
 // // TODO: Create a function that simple loops over the array and refactor stuff out to here
 // // TODO: When cells to live array is created checked if it is empty at end of a round, if it is run stopStop
 
+
+export {GameOfLife, Square, boardInit}
