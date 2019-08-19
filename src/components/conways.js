@@ -1,6 +1,7 @@
 // conway's game of life
 import React from "react";
 
+// init
 const boardInit = [
     [false, false, false, false, false, false, false, false, false, false],
     [false, false, false, false, false, false, false, false, false, false],
