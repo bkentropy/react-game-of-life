@@ -64,36 +64,38 @@ class RowDiv extends React.Component {
     }
 }
 
-// Building out game logic
-// // Build a map of the alive cells
-// function makeMap(row, column) {
-//   var map = [];
-//   var temp = []
-//   row = row || $('.row0');
-
-//    function colAnalyze(row) {
-//     for ( var i = 0; i < row.children().length; i++ ) {
-//       var square = row.children()[i]
-
-//       if ( square.classList.contains('alive') ) {
-//         temp.push(1);
-//       } else {
-//         temp.push(0);
+// // If 2 or 3 neighbors are alive then keep class alive
+// // else die. (from lonliness or overcrowding)
+// var liveOrDie = function() {
+//   var oldMap = makeMap()
+//   var cellsToDie = [];
+//   var cellsToLive = [];
+// // iterate over whole matrix
+//   for ( var r = 0; r < rows; r++ ) {
+//     for ( var c = 0; c < columns; c++ ) {
+//       // pass this into something that checks top, sides, and botton
+//       if ( checkNeighbors(r,c, oldMap) > 3) {
+//         // kill the cell
+//         cellsToDie.push([r,c]);
+//       } else if ( checkNeighbors(r,c,oldMap) < 2) {
+//         cellsToDie.push([r,c]);
+//       } else if ( checkNeighbors(r,c,oldMap) === 3) {
+//         // bring the cell to life
+//         cellsToLive.push([r,c]);
 //       }
 //     }
-//     map.push(temp);
-//     temp = []
-//     return map;
 //   }
-
-//   // Iterate over rows
-//   for ( var j = 0; j < row.children().length; j++ ) {
-//     colAnalyze($('.row'+j));
+//   for ( var i = 0; i < cellsToDie.length; i++ ) {
+//     var row = cellsToDie[i][0];
+//     var col = cellsToDie[i][1];
+//     $($('.row'+row).children()[col]).removeClass('alive')
 //   }
-
-//   return map;
+//   for ( var j = 0; j < cellsToLive.length; j++ ) {
+//     var row = cellsToLive[j][0];
+//     var col = cellsToLive[j][1];
+//     $($('.row'+row).children()[col]).addClass('alive')
+//   }
 // }
-
 class GameOfLife extends React.Component {
     constructor(props) {
         super(props)
@@ -134,7 +136,6 @@ class GameOfLife extends React.Component {
 //     $('.run').on('click', goGoGo);
 //     $('.pause').on('click', stopStop);
 //     $('.clear').on('click', clearBoard);
-
 
 
 // // Write a function that checks all of the neighbors
@@ -192,38 +193,6 @@ class GameOfLife extends React.Component {
 // }
 
 
-// // If 2 or 3 neighbors are alive then keep class alive
-// // else die. (from lonliness or overcrowding)
-// var liveOrDie = function() {
-//   var oldMap = makeMap()
-//   var cellsToDie = [];
-//   var cellsToLive = [];
-// // iterate over whole matrix
-//   for ( var r = 0; r < rows; r++ ) {
-//     for ( var c = 0; c < columns; c++ ) {
-//       // pass this into something that checks top, sides, and botton
-//       if ( checkNeighbors(r,c, oldMap) > 3) {
-//         // kill the cell
-//         cellsToDie.push([r,c]);
-//       } else if ( checkNeighbors(r,c,oldMap) < 2) {
-//         cellsToDie.push([r,c]);
-//       } else if ( checkNeighbors(r,c,oldMap) === 3) {
-//         // bring the cell to life
-//         cellsToLive.push([r,c]);
-//       }
-//     }
-//   }
-//   for ( var i = 0; i < cellsToDie.length; i++ ) {
-//     var row = cellsToDie[i][0];
-//     var col = cellsToDie[i][1];
-//     $($('.row'+row).children()[col]).removeClass('alive')
-//   }
-//   for ( var j = 0; j < cellsToLive.length; j++ ) {
-//     var row = cellsToLive[j][0];
-//     var col = cellsToLive[j][1];
-//     $($('.row'+row).children()[col]).addClass('alive')
-//   }
-// }
 
 // var timeouts = []; // timeouts array
 // function goGoGo() {
