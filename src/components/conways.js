@@ -1,18 +1,16 @@
 // conway's game of life
 import React from "react";
 
-const boardInit = [
-    [false, false, false, false, false, false, false, false, false, false],
-    [false, false, false, false, false, false, false, false, false, false],
-    [false, false, false, false, false, false, false, false, false, false],
-    [false, false, false, false, false, false, false, false, false, false],
-    [false, false, false, false, false, false, false, false, false, false],
-    [false, false, false, false, false, false, false, false, false, false],
-    [false, false, false, false, false, false, false, false, false, false],
-    [false, false, false, false, false, false, false, false, false, false],
-    [false, false, false, false, false, false, false, false, false, false],
-    [false, false, false, false, false, false, false, false, false, false],
-]
+// initialize board with false values
+const boardInit = []
+const numRows = 10
+const numCols = 10
+for (let i = 0; i < numRows; i++) {
+    boardInit[i] = []
+    for (let j = 0; j < numCols; j++) {
+        boardInit[i].push(false)
+    }
+}
 
 // game code
 class Square extends React.Component {
