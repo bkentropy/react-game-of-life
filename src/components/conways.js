@@ -96,6 +96,29 @@ class RowDiv extends React.Component {
 //     $($('.row'+row).children()[col]).addClass('alive')
 //   }
 // }
+
+class GameButtons extends React.Component {
+    constructor(props) {
+        super(props)
+        this.handleStepFunction = this.handleStepFunction.bind(this)
+    }
+
+    handleStepFunction() {
+        this.props.handleStepFunction()
+    }
+
+    render() {
+        return (
+            <div className="game-buttons" >
+                <button className="step" onClick={this.handleStepFunction}>[Step]</button>
+                <button className="run">[Run]</button>
+                <button className="stop">[Stop]</button>
+                <button className="clear">[Clear]</button>
+            </div>
+        )
+    }
+}
+
 class GameOfLife extends React.Component {
     constructor(props) {
         super(props)
@@ -108,6 +131,10 @@ class GameOfLife extends React.Component {
         const updateSq = !boardState[i][j]
         boardState[i][j] = updateSq
         this.setState({current: boardState})
+    }
+
+    handleStepFunction() {
+        console.log("yo")
     }
 
     render() {
@@ -127,6 +154,7 @@ class GameOfLife extends React.Component {
                 <div id="gameDiv">
                     {rows}
                 </div>
+                <GameButtons handleStepFunction={this.handleStepFunction}/>
             </div>
         )
     }

@@ -466,5 +466,30 @@ exports[`Test the the board works 1`] = `
       />
     </div>
   </div>
+  <div
+    className="game-buttons"
+  >
+    <button
+      className="step"
+      onClick={[Function]}
+    >
+      [Step]
+    </button>
+    <button
+      className="run"
+    >
+      [Run]
+    </button>
+    <button
+      className="stop"
+    >
+      [Stop]
+    </button>
+    <button
+      className="clear"
+    >
+      [Clear]
+    </button>
+  </div>
 </div>
 `;

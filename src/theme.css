@@ -76,3 +76,12 @@ ol, ul {
 .alive {
   background-color: green;
 }
+
+.game-buttons {
+    width: 100%;
+    text-align: center;
+    background-color: #ffffff;
+    margin: 0 auto;
+    height: 50px;
+    padding: 10px;
+}
