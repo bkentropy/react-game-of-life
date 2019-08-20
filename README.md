@@ -23,3 +23,6 @@ $ go build && ./server
 ```
 
 Then visit `localhost:3333`
+
+### Added TravisCI
+Automatically builds when pushed to Github.
