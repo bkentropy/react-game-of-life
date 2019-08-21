@@ -74,7 +74,7 @@ class GameButtons extends React.Component {
             <div className="game-buttons" >
                 <button className="step" onClick={this.props.handleStepFunction}>[Step]</button>
                 <button className="run" onClick={this.props.handleRunFunction}>[Run]</button>
-                <button className="stop">[Stop]</button>
+                <button className="stop" onClick={this.props.handleStopFunction}>[Stop]</button>
                 <button className="clear">[Clear]</button>
             </div>
         )
@@ -141,6 +141,7 @@ class GameOfLife extends React.Component {
         this.handleSquareClick = this.handleSquareClick.bind(this)
         this.handleStepFunction = this.handleStepFunction.bind(this)
         this.handleRunFunction = this.handleRunFunction.bind(this)
+        this.handleStopFunction = this.handleStopFunction.bind(this)
 
         this.state = {
             current: props.boardInit,
@@ -184,6 +185,13 @@ class GameOfLife extends React.Component {
         this.state.timer.push(setInterval(() => { return this.handleStepFunction()}, 500));
     }
 
+    handleStopFunction() {
+        this.state.timer.map((t) => {
+            clearInterval(t)
+        })
+        this.setState({timer: []})
+    }
+
     render() {
         var rows = this.state.current.map((row, i) => {
             return (
@@ -203,7 +211,8 @@ class GameOfLife extends React.Component {
                 </div>
                 <GameButtons 
                     handleStepFunction={this.handleStepFunction}
-                    handleRunFunction={this.handleRunFunction} />
+                    handleRunFunction={this.handleRunFunction}
+                    handleStopFunction={this.handleStopFunction} />
             </div>
         )
     }
