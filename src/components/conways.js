@@ -64,54 +64,16 @@ class RowDiv extends React.Component {
     }
 }
 
-// // If 2 or 3 neighbors are alive then keep class alive
-// // else die. (from lonliness or overcrowding)
-// var liveOrDie = function() {
-//   var oldMap = makeMap()
-//   var cellsToDie = [];
-//   var cellsToLive = [];
-// // iterate over whole matrix
-//   for ( var r = 0; r < rows; r++ ) {
-//     for ( var c = 0; c < columns; c++ ) {
-//       // pass this into something that checks top, sides, and botton
-//       if ( checkNeighbors(r,c, oldMap) > 3) {
-//         // kill the cell
-//         cellsToDie.push([r,c]);
-//       } else if ( checkNeighbors(r,c,oldMap) < 2) {
-//         cellsToDie.push([r,c]);
-//       } else if ( checkNeighbors(r,c,oldMap) === 3) {
-//         // bring the cell to life
-//         cellsToLive.push([r,c]);
-//       }
-//     }
-//   }
-//   for ( var i = 0; i < cellsToDie.length; i++ ) {
-//     var row = cellsToDie[i][0];
-//     var col = cellsToDie[i][1];
-//     $($('.row'+row).children()[col]).removeClass('alive')
-//   }
-//   for ( var j = 0; j < cellsToLive.length; j++ ) {
-//     var row = cellsToLive[j][0];
-//     var col = cellsToLive[j][1];
-//     $($('.row'+row).children()[col]).addClass('alive')
-//   }
-// }
-
 class GameButtons extends React.Component {
     constructor(props) {
         super(props)
-        this.handleStepFunction = this.handleStepFunction.bind(this)
-    }
-
-    handleStepFunction() {
-        this.props.handleStepFunction()
     }
 
     render() {
         return (
             <div className="game-buttons" >
-                <button className="step" onClick={this.handleStepFunction}>[Step]</button>
-                <button className="run">[Run]</button>
+                <button className="step" onClick={this.props.handleStepFunction}>[Step]</button>
+                <button className="run" onClick={this.props.handleRunFunction}>[Run]</button>
                 <button className="stop">[Stop]</button>
                 <button className="clear">[Clear]</button>
             </div>
@@ -178,7 +140,12 @@ class GameOfLife extends React.Component {
         super(props)
         this.handleSquareClick = this.handleSquareClick.bind(this)
         this.handleStepFunction = this.handleStepFunction.bind(this)
-        this.state = {current: props.boardInit}
+        this.handleRunFunction = this.handleRunFunction.bind(this)
+
+        this.state = {
+            current: props.boardInit,
+            timer: []
+        }
     }
 
     handleSquareClick(i, j) {
@@ -213,6 +180,10 @@ class GameOfLife extends React.Component {
         this.setState({current: newBoardState})
     }
 
+    handleRunFunction() {
+        this.state.timer.push(setInterval(() => { return this.handleStepFunction()}, 500));
+    }
+
     render() {
         var rows = this.state.current.map((row, i) => {
             return (
@@ -230,7 +201,9 @@ class GameOfLife extends React.Component {
                 <div id="gameDiv">
                     {rows}
                 </div>
-                <GameButtons handleStepFunction={this.handleStepFunction}/>
+                <GameButtons 
+                    handleStepFunction={this.handleStepFunction}
+                    handleRunFunction={this.handleRunFunction} />
             </div>
         )
     }
