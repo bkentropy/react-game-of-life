@@ -477,16 +477,19 @@ exports[`Test the the board works 1`] = `
     </button>
     <button
       className="run"
+      onClick={[Function]}
     >
       [Run]
     </button>
     <button
       className="stop"
+      onClick={[Function]}
     >
       [Stop]
     </button>
     <button
       className="clear"
+      onClick={[Function]}
     >
       [Clear]
     </button>
