@@ -64,21 +64,15 @@ class RowDiv extends React.Component {
     }
 }
 
-class GameButtons extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return (
-            <div className="game-buttons" >
-                <button className="step" onClick={this.props.handleStepFunction}>[Step]</button>
-                <button className="run" onClick={this.props.handleRunFunction}>[Run]</button>
-                <button className="stop" onClick={this.props.handleStopFunction}>[Stop]</button>
-                <button className="clear">[Clear]</button>
-            </div>
-        )
-    }
+function GameButtons(props) {
+    return (
+        <div className="game-buttons" >
+            <button className="step" onClick={props.handleStepFunction}>[Step]</button>
+            <button className="run" onClick={props.handleRunFunction}>[Run]</button>
+            <button className="stop" onClick={props.handleStopFunction}>[Stop]</button>
+            <button className="clear">[Clear]</button>
+        </div>
+    )
 }
 
 function checkNeighbors(r, c, checkThis) {
