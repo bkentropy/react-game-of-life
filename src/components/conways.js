@@ -2,14 +2,18 @@
 import React from "react";
 
 // initialize board with false values
-const boardInit = []
-const numRows = 10
-const numCols = 10
-for (let i = 0; i < numRows; i++) {
-    boardInit[i] = []
-    for (let j = 0; j < numCols; j++) {
-        boardInit[i].push(false)
+function boardInit() {
+    const boardInit = []
+    const numRows = 10
+    const numCols = 10
+    for (let i = 0; i < numRows; i++) {
+        boardInit[i] = []
+        for (let j = 0; j < numCols; j++) {
+            boardInit[i].push(false)
+        }
     }
+
+    return boardInit
 }
 
 // game code
@@ -70,7 +74,7 @@ function GameButtons(props) {
             <button className="step" onClick={props.handleStepFunction}>[Step]</button>
             <button className="run" onClick={props.handleRunFunction}>[Run]</button>
             <button className="stop" onClick={props.handleStopFunction}>[Stop]</button>
-            <button className="clear">[Clear]</button>
+            <button className="clear" onClick={props.handleClearFunction}>[Clear]</button>
         </div>
     )
 }
@@ -136,9 +140,10 @@ class GameOfLife extends React.Component {
         this.handleStepFunction = this.handleStepFunction.bind(this)
         this.handleRunFunction = this.handleRunFunction.bind(this)
         this.handleStopFunction = this.handleStopFunction.bind(this)
+        this.handleClearFunction = this.handleClearFunction.bind(this)
 
         this.state = {
-            current: props.boardInit,
+            current: boardInit(),
             timer: []
         }
     }
@@ -186,6 +191,10 @@ class GameOfLife extends React.Component {
         this.setState({timer: []})
     }
 
+    handleClearFunction() {
+        this.setState({current: boardInit()})
+    }
+
     render() {
         var rows = this.state.current.map((row, i) => {
             return (
@@ -206,7 +215,8 @@ class GameOfLife extends React.Component {
                 <GameButtons 
                     handleStepFunction={this.handleStepFunction}
                     handleRunFunction={this.handleRunFunction}
-                    handleStopFunction={this.handleStopFunction} />
+                    handleStopFunction={this.handleStopFunction}
+                    handleClearFunction={this.handleClearFunction} />
             </div>
         )
     }
@@ -246,4 +256,4 @@ class GameOfLife extends React.Component {
 // // TODO: When cells to live array is created checked if it is empty at end of a round, if it is run stopStop
 
 
-export {GameOfLife, Square, boardInit}
+export {GameOfLife, Square}
