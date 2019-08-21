@@ -86,3 +86,7 @@ ol, ul {
     justify-content: space-around;
     width: 500px;
 }
+
+.footer {
+  text-align: center;
+}

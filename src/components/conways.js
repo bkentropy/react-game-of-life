@@ -133,6 +133,17 @@ function checkNeighbors(r, c, checkThis) {
   return total
 }
 
+function Rules() {
+    return (
+        <div className="footer rules">
+            <p>Any live cell with fewer than two live neighbours dies, as if caused by under-population.</p>
+            <p>Any live cell with two or three live neighbours lives on to the next generation.</p>
+            <p>Any live cell with more than three live neighbours dies, as if by over-population.</p>
+            <p>Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.</p>
+        </div>
+    )
+}
+
 class GameOfLife extends React.Component {
     constructor(props) {
         super(props)
@@ -161,7 +172,6 @@ class GameOfLife extends React.Component {
             return row.map((sq, j) => {
                 // returns true for alive, false for dead
                 const totalNeighbors = checkNeighbors(i, j, boardState)
-                // console.log(totalNeighbors)
                 if (totalNeighbors < 2) {
                     return false
                 } else if (totalNeighbors === 2 || totalNeighbors === 3) {
@@ -217,6 +227,7 @@ class GameOfLife extends React.Component {
                     handleRunFunction={this.handleRunFunction}
                     handleStopFunction={this.handleStopFunction}
                     handleClearFunction={this.handleClearFunction} />
+                <Rules />
             </div>
         )
     }
