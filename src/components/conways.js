@@ -119,10 +119,65 @@ class GameButtons extends React.Component {
     }
 }
 
+function checkNeighbors(r, c, checkThis) {
+  // keep count
+  var total = 0;
+
+  // check row above
+  function topRow(r,c) {
+    var neighbors = 0;
+    if ( checkThis[r - 1] ) {
+      if ( checkThis[r - 1][c - 1] ) {
+        neighbors += 1;
+      }
+      if ( checkThis[r - 1][c] ) {
+        neighbors += 1;
+      }
+      if ( checkThis[r - 1][c + 1] ) {
+        neighbors += 1;
+      }
+    }
+    return neighbors
+  }
+
+  // check sides
+  function sides(r,c) {
+    var neighbors = 0;
+    if ( checkThis[r][c - 1] ) {
+      neighbors += 1;
+    }
+    if ( checkThis[r][c + 1] ) {
+      neighbors += 1;
+    }
+    return neighbors
+  }
+
+  // check row below
+  function belowRow(r,c) {
+    var neighbors = 0;
+    if ( checkThis[r + 1] ) {
+      if ( checkThis[r + 1][c - 1] ) {
+        neighbors += 1;
+      }
+      if ( checkThis[r + 1][c] ) {
+        neighbors += 1;
+      }
+      if ( checkThis[r + 1][c + 1] ) {
+        neighbors += 1;
+      }
+    }
+    return neighbors
+  }
+
+  total = topRow(r,c) + sides(r,c) + belowRow(r,c);
+  return total
+}
+
 class GameOfLife extends React.Component {
     constructor(props) {
         super(props)
         this.handleSquareClick = this.handleSquareClick.bind(this)
+        this.handleStepFunction = this.handleStepFunction.bind(this)
         this.state = {current: props.boardInit}
     }
 
@@ -134,7 +189,28 @@ class GameOfLife extends React.Component {
     }
 
     handleStepFunction() {
-        console.log("yo")
+        const boardState = this.state.current
+        const newBoardState = boardState.map((row, i) => {
+            return row.map((sq, j) => {
+                // returns true for alive, false for dead
+                const totalNeighbors = checkNeighbors(i, j, boardState)
+                // console.log(totalNeighbors)
+                if (totalNeighbors < 2) {
+                    return false
+                } else if (totalNeighbors === 2 || totalNeighbors === 3) {
+                    if (sq) {
+                        return true
+                    } else if (!sq && totalNeighbors === 3) {
+                        return true
+                    } else {
+                        return false
+                    }
+                } else if (totalNeighbors > 3) {
+                    return false
+                }
+            })
+        })
+        this.setState({current: newBoardState})
     }
 
     render() {
@@ -168,57 +244,6 @@ class GameOfLife extends React.Component {
 
 // // Write a function that checks all of the neighbors
 //   // This must be done in 'one step of time'
-// function checkNeighbors(r, c, checkThis) {
-//   // keep count
-//   var total = 0;
-
-//   // check row above
-//   function topRow(r,c) {
-//     var neighbors = 0;
-//     if ( checkThis[r - 1] ) {
-//       if ( checkThis[r - 1][c - 1] === 1 ) {
-//         neighbors += 1;
-//       }
-//       if ( checkThis[r - 1][c] === 1) {
-//         neighbors += 1;
-//       }
-//       if ( checkThis[r - 1][c + 1] === 1) {
-//         neighbors += 1;
-//       }
-//     }
-//     return neighbors
-//   }
-//   // check sides
-//   function sides(r,c) {
-//     var neighbors = 0;
-//     if ( checkThis[r][c - 1] === 1 ) {
-//       neighbors += 1;
-//     }
-//     if ( checkThis[r][c + 1] === 1) {
-//       neighbors += 1;
-//     }
-//     return neighbors
-//   }
-//   // check row below
-//   function belowRow(r,c) {
-//     var neighbors = 0;
-//     if ( checkThis[r + 1] ) {
-//       if ( checkThis[r + 1][c - 1] === 1 ) {
-//         neighbors += 1;
-//       }
-//       if ( checkThis[r + 1][c] === 1) {
-//         neighbors += 1;
-//       }
-//       if ( checkThis[r + 1][c + 1] === 1) {
-//         neighbors += 1;
-//       }
-//     }
-//     return neighbors
-//   }
-
-//   total = topRow(r,c) + sides(r,c) + belowRow(r,c);
-//   return total
-// }
 
 
 

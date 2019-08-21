@@ -78,10 +78,11 @@ ol, ul {
 }
 
 .game-buttons {
-    width: 100%;
     text-align: center;
     background-color: #ffffff;
     margin: 0 auto;
-    height: 50px;
     padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    width: 500px;
 }
