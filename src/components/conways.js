@@ -267,4 +267,4 @@ class GameOfLife extends React.Component {
 // // TODO: When cells to live array is created checked if it is empty at end of a round, if it is run stopStop
 
 
-export {GameOfLife, Square}
+export {GameOfLife, Square, checkNeighbors}

@@ -1,7 +1,8 @@
 import React from "react"
-import {Square, GameOfLife, boardInit} from "../../components/conways"
+import {Square, GameOfLife, boardInit, checkNeighbors} from "../../components/conways"
 import renderer from "react-test-renderer"
 
+// Snapshots
 test("Square changes green when clicked", () => {
     const i = 1
     const col = "column" + i
@@ -33,4 +34,16 @@ test("Test the the board works", () => {
     // // should turn back "dead"
     // tree.children[1].children[0].children[0].props.onClick()
     // expect(tree).toMatchSnapshot()
+})
+
+// Functionality
+test("Test check neighbors function", () => {
+    const exampleGrid = [
+        [true, true, true],
+        [false, false, false],
+        [false, false, false]
+    ]
+
+    const neighbors = checkNeighbors(1, 1, exampleGrid)
+    expect(neighbors).toBe(3)
 })
