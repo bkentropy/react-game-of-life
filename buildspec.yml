@@ -6,17 +6,17 @@ phases:
       runtime-versions:
         golang: 1.12
 
-  pre_build: 
-    commands:
-
-      # Run all tests included with our application
-      - go test
+  #pre_build: 
+  #  commands:
+  #    # Run all tests included with our application
+  #    - go test
 
   build:
     commands:
-
       # Build our application
       - go build -o server
+      - echo {{ssm:/Build/testenv}}
+      - echo "nice"
 
 artifacts:
   files:
