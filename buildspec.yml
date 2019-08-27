@@ -16,8 +16,6 @@ phases:
       # Build our application
       - cd server
       - go build -o server
-      - echo {{ssm:/Build/testenv}}
-      - echo "nice"
 
 artifacts:
   files:
