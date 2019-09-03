@@ -24,6 +24,7 @@ phases:
     commands:
       # Build our application
       - pwd
+      - cd server
       - ls
       - go build -o server
       # Docker stuff
@@ -37,8 +38,4 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push $ECRID/$IMAGE_REPO_NAME:$IMAGE_TAG
-
-artifacts:
-  files:
-    - /server
 
