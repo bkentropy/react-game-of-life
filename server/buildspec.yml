@@ -23,9 +23,7 @@ phases:
   build:
     commands:
       # Build our application
-      - pwd
       - cd server
-      - ls
       - go build -o server
       # Docker stuff
       - echo Build started on `date`
