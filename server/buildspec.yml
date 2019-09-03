@@ -2,7 +2,6 @@ version: 0.2
 
 env:
   parameter-store:
-    envvar: "/Build/testenv"
     ECRID: "/Build/ECRID"
   environment-variables:
     AWS_DEFAULT_REGION : "us-east-1"
@@ -25,7 +24,6 @@ phases:
     commands:
       # Build our application
       - go build -o server
-      - echo $envvar
       - pwd
       - ls
       # Docker stuff
