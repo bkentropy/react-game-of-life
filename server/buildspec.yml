@@ -3,7 +3,7 @@ version: 0.2
 env:
   parameter-store:
     ECRID: "/Build/ECRID"
-  environment-variables:
+  variables:
     AWS_DEFAULT_REGION : "us-east-1"
     # AWS_ACCOUNT_ID with a value of account-ID
     IMAGE_TAG: "latest" # parameterize this
