@@ -13,7 +13,7 @@ phases:
   install:
     runtime-versions:
       golang: 1.12
-      docker: 18.0
+      docker: 18:09.0
 
   pre_build: 
    commands:
