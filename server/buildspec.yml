@@ -18,15 +18,14 @@ phases:
   pre_build: 
    commands:
      - echo Logging in to Amazon ECR
-     - aws --version
      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
 
   build:
     commands:
       # Build our application
-      - go build -o server
       - pwd
       - ls
+      - go build -o server
       # Docker stuff
       - echo Build started on `date`
       - echo Building Docker images...
