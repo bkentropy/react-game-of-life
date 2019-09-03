@@ -3,26 +3,43 @@ version: 0.2
 env:
   parameter-store:
     envvar: "/Build/testenv"
+    ECRID: "/Build/ECRID"
+  environment-variables:
+    AWS_DEFAULT_REGION : "us-east-1"
+    # AWS_ACCOUNT_ID with a value of account-ID
+    IMAGE_TAG: "latest" # parameterize this
+    IMAGE_REPO_NAME: "react-games"
 
 phases:
-
   install:
-      runtime-versions:
-        golang: 1.12
+    runtime-versions:
+      golang: 1.12
+      docker: 18
 
-  #pre_build: 
-  #  commands:
-  #    # Run all tests included with our application
-  #    - go test
+  pre_build: 
+   commands:
+     - echo Logging in to Amazon ECR
+     - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
 
   build:
     commands:
       # Build our application
-      - cd server
       - go build -o server
       - echo $envvar
+      - pwd
+      - ls
+      # Docker stuff
+      - echo Build started on `date`
+      - echo Building Docker images...
+      - docker build -t $IMAGE_REPO_NAME:$IMAGETAG .
+      - docker tag $IMAGE_REPO_NAME:$IMAGETAG $ECRID/$IMAGE_REPO_NAME:$IMAGETAG
+      
+  post-build:
+    - echo Build completed on `date`
+    - echo Pushing the Docker image...
+    - docker push $ECRID/$IMAGE_REPO_NAME:$IMAGE_TAG
 
 artifacts:
   files:
-    - server
+    - /server
 
