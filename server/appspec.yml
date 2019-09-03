@@ -1,0 +1,10 @@
+version: 0.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:us-east-1:243631475555:task-definition/React-Games:1"
+        LoadBalancerInfo:
+          ContainerName: "GameContainer"
+          ContainerPort: 3333
+          HostPort: 80
