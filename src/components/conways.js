@@ -218,7 +218,6 @@ class GameOfLife extends React.Component {
         
         return (
             <div>
-                <h1>Game Of Life</h1>
                 <div id="gameDiv">
                     {rows}
                 </div>
