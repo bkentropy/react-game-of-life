@@ -24,5 +24,6 @@ $ go build && ./server
 
 Then visit `localhost:3333`
 
-### Added TravisCI
-Automatically builds when pushed to Github.
+### Deploying
+docker build -t reactgame80:latest . 
+docker tag reactgame80 243631475555.dkr.ecr.us-east-1.amazonaws.com/react-games:port80

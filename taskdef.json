@@ -1,0 +1,50 @@
+{
+    "tasks": [
+        {
+            "taskArn": "arn:aws:ecs:us-east-1:243631475555:task/9562f087-9e2e-4ee1-95ed-214d121421b9",
+            "clusterArn": "arn:aws:ecs:us-east-1:243631475555:cluster/React-Games",
+            "taskDefinitionArn": "arn:aws:ecs:us-east-1:243631475555:task-definition/React-Games:1",
+            "containerInstanceArn": "arn:aws:ecs:us-east-1:243631475555:container-instance/ff964131-50ca-4c90-ba09-8cd3a10aa931",
+            "overrides": {
+                "containerOverrides": [
+                    {
+                        "name": "react-game"
+                    }
+                ]
+            },
+            "lastStatus": "RUNNING",
+            "desiredStatus": "RUNNING",
+            "cpu": "128",
+            "memory": "1024",
+            "containers": [
+                {
+                    "containerArn": "arn:aws:ecs:us-east-1:243631475555:container/a8d5081b-9d8a-4fbf-90a0-c77b4644dc59",
+                    "taskArn": "arn:aws:ecs:us-east-1:243631475555:task/9562f087-9e2e-4ee1-95ed-214d121421b9",
+                    "name": "react-game",
+                    "lastStatus": "RUNNING",
+                    "networkBindings": [
+                        {
+                            "bindIP": "0.0.0.0",
+                            "containerPort": 3333,
+                            "hostPort": 80,
+                            "protocol": "tcp"
+                        }
+                    ],
+                    "networkInterfaces": []
+                }
+            ],
+            "startedBy": "ecs-svc/9223370470010175441",
+            "version": 3,
+            "connectivity": "CONNECTED",
+            "connectivityAt": 1567463729.576,
+            "pullStartedAt": 1567463730.121,
+            "pullStoppedAt": 1567463730.121,
+            "createdAt": 1567463729.576,
+            "startedAt": 1567463758.108,
+            "group": "service:React-Games-Service",
+            "launchType": "EC2",
+            "attachments": []
+        }
+    ],
+    "failures": []
+}

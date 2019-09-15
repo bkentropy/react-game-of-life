@@ -14,4 +14,6 @@ func main() {
 	})
 	fmt.Println("Server up and running on port 3333")
 	http.ListenAndServe(":3333", nil)
+	// fmt.Println("Server up and running on port 80")
+	// http.ListenAndServe(":80", nil)
 }
