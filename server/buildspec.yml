@@ -36,7 +36,8 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push $ECRID/$IMAGE_REPO_NAME:$IMAGE_TAG
-      - printf '[{"name":"%s","imageUri":"%s:latest"}]' $IMAGE_REPO_NAME $ECRID > imagedefinitions.json
+      #- printf '[{"name":"%s","imageUri":"%s:latest"}]' $IMAGE_REPO_NAME $ECRID > imagedefinitions.json
+      - printf '[{"name":"React-Games","imageUri":"%s:latest"}]' $ECRID > imagedefinitions.json
       - cat imagedefinitions.json
 
 artifacts:
