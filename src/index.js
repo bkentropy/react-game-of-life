@@ -14,7 +14,7 @@ function Summary() {
     return (
         <div>
             <h2>Summary</h2>
-            <p>So far only tic toe is available, Conway's game of life is next</p>
+            <p>Tic tac toe and Conway's Game of Life are available.</p>
         </div>
     )
 }
