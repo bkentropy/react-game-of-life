@@ -28,7 +28,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/react-games:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/react-games:v0.0.1
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

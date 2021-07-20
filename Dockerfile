@@ -25,4 +25,3 @@ RUN go build server.go
 
 
 CMD ["./server"]
-# ENTRYPOINT [ "./entrypoint.sh" ]
